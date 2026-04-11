@@ -1,0 +1,26 @@
+FROM tomcat:9.0
+
+# 기본 ROOT 제거
+RUN rm -rf /usr/local/tomcat/webapps/ROOT
+
+# MySQL Connector 버전
+ENV MYSQL_DRIVER_VERSION=8.0.33
+
+# wget 설치 및 MySQL JDBC 다운로드 → Tomcat lib 에 추가
+RUN apt-get update && apt-get install -y wget && \
+    wget https://repo1.maven.org/maven2/com/mysql/mysql-connector-j/${MYSQL_DRIVER_VERSION}/mysql-connector-j-${MYSQL_DRIVER_VERSION}.jar \
+    -O /usr/local/tomcat/lib/mysql-connector-j-${MYSQL_DRIVER_VERSION}.jar && \
+    rm -rf /var/lib/apt/lists/*
+
+# 앱 복사
+COPY ROOT/ /usr/local/tomcat/webapps/ROOT/
+COPY server.xml /usr/local/tomcat/conf/server.xml
+COPY context.xml /usr/local/tomcat/conf/context.xml
+
+
+# 8080 포트 노출
+EXPOSE 8080
+
+# Tomcat 실행
+CMD ["catalina.sh", "run"]
+

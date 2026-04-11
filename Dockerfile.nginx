@@ -1,0 +1,14 @@
+FROM nginx:latest
+
+# 기존 설정 파일 제거
+RUN rm /etc/nginx/conf.d/default.conf
+
+# 새로운 프록시 설정 파일 복사
+COPY default.conf /etc/nginx/conf.d/default.conf
+
+# 80번 포트 노출
+EXPOSE 80
+
+# Nginx 실행
+CMD ["nginx", "-g", "daemon off;"]
+

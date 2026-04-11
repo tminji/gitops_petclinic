@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: frontend-nginx
+  name: frontend-nginx
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: frontend-nginx
+  template:
+    metadata:
+      labels:
+        app: frontend-nginx
+    spec:
+      containers:
+      - image: 572638914147.dkr.ecr.ap-northeast-2.amazonaws.com/k8s-cluster-repo:v2.0
+        name: frontend-nginx
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
