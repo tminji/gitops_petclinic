@@ -24,9 +24,9 @@ spec:
         image: 790049875856.dkr.ecr.ap-northeast-2.amazonaws.com/ecr_tomcat:650adc7
         resources:
           requests:
-            cpu: "30m"
+            cpu: "500m"
           limits:
-            cpu: "50m"
+            cpu: "600m"
         ports:
           - containerPort: 8080
 ---
