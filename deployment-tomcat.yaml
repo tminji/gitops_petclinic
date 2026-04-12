@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: tomcat
-        image: 790049875856.dkr.ecr.ap-northeast-2.amazonaws.com/ecr_tomcat:13ed966
+        image: 790049875856.dkr.ecr.ap-northeast-2.amazonaws.com/ecr_tomcat:57e5512
         resources:
           requests:
             cpu: "30m"
