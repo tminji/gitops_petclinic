@@ -47,12 +47,12 @@ jobs:
       - name: Update nginx Deployment YAML
         run: |
           IMAGE_TAG=${GITHUB_SHA::7}
-          sed -i "s|image: .*|image: 595362810845.dkr.ecr.ap-northeast-2.amazonaws.com/ecr_nginx:$IMAGE_TAG|" ./deployment-nginx.yaml
+          sed -i "s|image: .*|image: 790049875856.dkr.ecr.ap-northeast-2.amazonaws.com/ecr_nginx:$IMAGE_TAG|" ./deployment-nginx.yaml
 
       - name: Update tomcat Deployment YAML
         run: |
           IMAGE_TAG=${GITHUB_SHA::7}
-          sed -i "s|image: .*|image: 595362810845.dkr.ecr.ap-northeast-2.amazonaws.com/ecr_tomcat:$IMAGE_TAG|" ./deployment-tomcat.yaml
+          sed -i "s|image: .*|image: 790049875856.dkr.ecr.ap-northeast-2.amazonaws.com/ecr_tomcat:$IMAGE_TAG|" ./deployment-tomcat.yaml
 
       # 7. 변경사항이 있으면 커밋 & 푸시
       #- name: Commit and push if there are changes
@@ -72,5 +72,5 @@ jobs:
           git add ./deployment-nginx.yaml ./deployment-tomcat.yaml
           git diff --quiet && git diff --staged --quiet || (
           git commit -m "Update image tag to ${GITHUB_SHA}"
-          git push --force https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/powermvp1024/GitOps_petclinic.git HEAD:main
+          git push --force https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/tminji/gitops_petclinic.git HEAD:main
           )
